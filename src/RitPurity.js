@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Col, Row, Input, Form, FormGroup, Label} from 'reactstrap';
+import Question from "./question";
+import {Col, Row, Input, Form, FormGroup, Label, Button, InputGroup} from 'reactstrap';
 
 const QUESTIONS = [
     "held hands romantically",
@@ -105,7 +106,7 @@ const QUESTIONS = [
     "performed sexual acts with a member of your non-preffered sex"
 ]
 
-class RitPurity extends React.Component{
+export default class RitPurity extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
@@ -118,15 +119,21 @@ class RitPurity extends React.Component{
     }
 
     render(){
-        let buttons = []
+        let questions = [];
         for(let i=0; i<QUESTIONS.length; i++){
-            buttons.push()
+            questions.push(<Question updateScore={this.updateScore} content={QUESTIONS[i]} key={i} index={i}/>)
+            // console.log(QUESTIONS[i])
         }
 
         return(
-
+            <div>
+                <h1>Rit Purity Test</h1>
+                {questions}
+                <h3>Score: {this.state.score}</h3>
+            </div>
         );
     }
 
 
 }
+

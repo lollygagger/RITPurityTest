@@ -11,15 +11,43 @@ import {
     Modal,
     ModalHeader,
     ModalBody,
-    ModalFooter
+    ModalFooter, InputGroupText,
+    InputGroup
 } from 'reactstrap';
 
-class Question extends React.Component {
+export default class Question extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            content = "",
-
+            content: props.content,
+            index: props.index,
+            key: props.key
         }
+        this.handleCheck = this.handleCheck.bind(this)
+
+    }
+
+    handleCheck(event){
+        if(event.target.checked){
+            this.props.updateScore(1);
+        }else{
+            this.props.updateScore(-1);
+        }
+
+    }
+
+
+    render() {
+
+        return (
+            <Row>
+                <InputGroupText>
+                    <Label for="check"> {this.state.index+1}{":  \n"}</Label>
+                    <Input id="check" type="checkbox" onChange={this.handleCheck}/>
+                    <p>__</p>
+                    {this.state.content}
+                </InputGroupText>
+            </Row>
+        );
     }
 }
