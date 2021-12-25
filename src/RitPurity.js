@@ -122,7 +122,6 @@ export default class RitPurity extends React.Component{
         let questions = [];
         for(let i=0; i<QUESTIONS.length; i++){
             questions.push(<Question updateScore={this.updateScore} content={QUESTIONS[i]} key={i} index={i}/>)
-            // console.log(QUESTIONS[i])
         }
 
         return(
